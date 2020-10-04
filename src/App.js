@@ -1,6 +1,10 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+
+//Components
+
 import NavBar from './components/ui/navBar/navBar'
+import LoginForm from './components/auth/loginForm'
 //redux
 
 
@@ -17,6 +21,8 @@ function App() {
         
         <div className='container mt-5'>
           <Switch>
+            <LoginForm />
+
             
           </Switch>
         </div>
