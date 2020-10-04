@@ -4,6 +4,7 @@ import {
     ONE_USER_SUCCESS
 } from '../types'
 import userService from '../config/axios'
+import Swal from 'sweetalert2'
 
 
 
@@ -16,6 +17,7 @@ export function getUsersListAction(page) {
             dispatch(getUsersSuccess(response.data, page))
 
         } catch (error) {
+            //TODO completar el error 
 
         }
     }
@@ -36,6 +38,7 @@ export function getUserDetailAction(id) {
             const response = await userService.get(`/api/users/${id}`)
             dispatch(getOneUser(response))
         } catch (error) {
+            //TODO completar el error
 
         }
     }
@@ -50,8 +53,15 @@ export function createNewUserAction(user) {
     return async (dispatch) => {
         try {
             const response = await userService.post('/api/users', user)
-            console.log (response)
+            console.log(response)
+            Swal.fire('Success', 'The user was added to de DDBB', 'success')
         } catch (error) {
+            //TODO completar el error
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Something gone wrong, please try again'
+            })
 
         }
     }

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom';
-import { createNewUserAction} from '../../../action/usersAction'
+import { createNewUserAction } from '../../../action/usersAction'
 
 
 
@@ -26,7 +26,8 @@ const NewUserForm = () => {
             name,
             job
         })
-        console.log({name,job})
+        saveName('')
+        saveJob('')
 
 
     }
