@@ -9,8 +9,8 @@ const GoogleLog = () => {
     const dispatch = useDispatch()
     const history = useHistory()
 
-    const callProfile = profile => {
-        dispatch(addProfileAction(profile))
+    const callProfile = (profile, social) => {
+        dispatch(addProfileAction(profile, social = 'google'))
         history.push('/users')
         
     }

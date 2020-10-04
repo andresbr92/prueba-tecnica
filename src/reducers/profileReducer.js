@@ -7,7 +7,8 @@ import {
 const initialState = {
     profile: null,
     isLoggedIn: null,
-    loading: false
+    loading: false,
+    social:''
 }
 
 export default function (state = initialState, action) {
@@ -17,7 +18,13 @@ export default function (state = initialState, action) {
                 
                 ...state,
                 profile: action.payload,
-                isLoggedIn: true
+                isLoggedIn: true,
+                social: action.social
+            }
+        case LOGIN_FAILURE:
+            return {
+                ...state,
+                error: action.payload
             }
         default: 
             return state

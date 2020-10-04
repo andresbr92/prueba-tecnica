@@ -14,7 +14,15 @@ import { useSelector, useDispatch } from 'react-redux'
 const NavBar = () => {
     const isLoggedIn = useSelector(state => state.profile.isLoggedIn)
     const pictureLog = useSelector(state => {
-    return  isLoggedIn ? state.profile.profile.picture.data.url : null
+        switch (state.profile.social) {
+            case 'facebook':
+                return state.profile.profile.picture.data.url
+            case 'google':
+                return state.profile.profile.profileObj.imageUrl
+            default:
+                return null
+        }
+    // return  isLoggedIn ? state.profile.profile.picture.data.url : null
     })
 
 
