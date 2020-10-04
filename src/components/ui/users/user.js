@@ -16,10 +16,27 @@ const Users = () => {
     const dispatch = useDispatch()
 
     useEffect(() => { 
-        dispatch(getUsersListAction())
+        dispatch(getUsersListAction(page))
 
     }, [])
     const users = useSelector(state => state.users.users.data)
+    let page = useSelector(state => state.users.page )
+    const numPageNext = () => {
+        page++
+        dispatch(getUsersListAction(page))
+        return
+
+    }
+    const numPagePrevious = () => {
+        if (page === 1) {
+            return
+        } else {
+            page--
+            dispatch(getUsersListAction(page))
+            return
+        }
+
+    }
     return (
         <>
             {isLoggedIn ? <p> Lista de usuarios</p> : history.push('/login')}
@@ -43,6 +60,16 @@ const Users = () => {
                 </tbody>
 
             </table>
+            {page !== 1 ?<button
+                type='button'
+                className='btn btn-primary mr-2'
+                onClick={numPagePrevious}
+            > Anterior </button> : null}
+            <button
+                type='button'
+                className='btn btn-primary mr-2'
+                onClick={ numPageNext}
+            > Siguiente </button>
         </>
     );
 }

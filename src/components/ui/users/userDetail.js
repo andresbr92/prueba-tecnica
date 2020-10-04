@@ -1,7 +1,10 @@
 import React from 'react';
 
 const UserDetail = ({ user }) => {
-    const {first_name, avatar, id} = user
+    const acion = () => {
+        alert ('kskskks')
+    }
+    const { first_name, avatar, id } = user
     return (
         <tr>
             <td>{first_name}</td>
@@ -17,6 +20,9 @@ const UserDetail = ({ user }) => {
                     className='btn btn-danger'
                     // onClick={() => confirmarEliminarProducto(id)}
                 >Eliminar</button>
+            </td>
+            <td>
+                {id}
             </td>
         </tr>
     );

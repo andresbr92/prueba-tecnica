@@ -7,12 +7,12 @@ import userService from '../config/axios'
 
 
 //add users list to state
-export function getUsersListAction() {
+export function getUsersListAction(page) {
     return async (dispatch) => {
         dispatch(startDownloadUser())
         try {
-            const response = await userService.get('/api/users?page=2')
-            dispatch(getUsersSuccess(response.data))
+            const response = await userService.get(`/api/users?page=${page}`)
+            dispatch(getUsersSuccess(response.data,page))
 
         } catch (error) {
 
@@ -22,8 +22,9 @@ export function getUsersListAction() {
 const startDownloadUser = () => ({
     type: START_DOWNLOAD_USERS
 })
-const getUsersSuccess = response => ({
+const getUsersSuccess = (response,page) => ({
     type: GET_USERS_SUCCESS,
-    payload: response
+    payload: response,
+    page
 
 })

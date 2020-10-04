@@ -8,6 +8,7 @@ const initialState = {
     users: [],
     error: null,
     loading: false,
+    page: 1
 }
 
 
@@ -22,7 +23,8 @@ export default function (state = initialState, action) {
             return {
                 ...state,
                 users: action.payload,
-                loading: false
+                loading: false,
+                page:action.page
             }
         default:
             return state
