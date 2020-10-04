@@ -13,6 +13,7 @@ const initialState = {
 
 
 export default function (state = initialState, action) {
+    
     switch (action.type) {
         case START_DOWNLOAD_USERS:
             return {
@@ -20,9 +21,10 @@ export default function (state = initialState, action) {
                 loading: true
             }
         case GET_USERS_SUCCESS:
+            console.log(action)
             return {
                 ...state,
-                users: action.payload,
+                users: action.payload.data.slice(0,5),
                 loading: false,
                 page:action.page
             }

@@ -12,7 +12,8 @@ export function getUsersListAction(page) {
         dispatch(startDownloadUser())
         try {
             const response = await userService.get(`/api/users?page=${page}`)
-            dispatch(getUsersSuccess(response.data,page))
+            dispatch(getUsersSuccess(response.data, page))
+            console.log(response.data.data)
 
         } catch (error) {
 

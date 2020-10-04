@@ -1,26 +1,26 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import { useHistory } from 'react-router-dom'
 //components
 import UserDetail from './userDetail'
 //redux
 import { useSelector, useDispatch } from 'react-redux'
-import { getUsersListAction} from '../../../action/usersAction'
+import { getUsersListAction } from '../../../action/usersAction'
 
 
 
 const Users = () => {
-    
+
     const history = useHistory()
     const isLoggedIn = useSelector(state => state.profile.isLoggedIn)
-    
+
     const dispatch = useDispatch()
 
-    useEffect(() => { 
+    useEffect(() => {
         dispatch(getUsersListAction(page))
 
     }, [])
-    const users = useSelector(state => state.users.users.data)
-    let page = useSelector(state => state.users.page )
+    const users = useSelector(state => state.users.users)
+    let page = useSelector(state => state.users.page)
     const numPageNext = () => {
         page++
         dispatch(getUsersListAction(page))
@@ -55,21 +55,21 @@ const Users = () => {
                             user={user}
                         />
                     )) : null}
-                    
+
 
                 </tbody>
 
             </table>
-            {page !== 1 ?<button
+            {page !== 1 ? <button
                 type='button'
                 className='btn btn-primary mr-2'
                 onClick={numPagePrevious}
-            > Anterior </button> : null}
+            > Previous </button> : null}
             <button
                 type='button'
                 className='btn btn-primary mr-2'
-                onClick={ numPageNext}
-            > Siguiente </button>
+                onClick={numPageNext}
+            > Next </button>
         </>
     );
 }
