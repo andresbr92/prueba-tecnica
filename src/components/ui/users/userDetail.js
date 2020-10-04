@@ -1,30 +1,28 @@
 import React from 'react';
+import { useSelector} from 'react-redux'
+import Card from 'react-bootstrap/Card'
+import Col from 'react-bootstrap/Col'
 
-const UserDetail = ({ user }) => {
-    const acion = () => {
-        alert ('kskskks')
-    }
-    const { first_name, avatar, id } = user
+
+
+const UserDetail = () => {
+
+    const user = useSelector(state => state.users.getOneUser.data)
+
     return (
-        <tr>
-            <td>{first_name}</td>
-            <td> <img src={avatar}></img></td>
-            <td className='acciones'>
-                <button
-                    type='button'
-                    className='btn btn-primary mr-2'
-                    // onClick={() => redireccionarEdicion(producto)}
-                > Editar </button>
-                <button
-                    type='button'
-                    className='btn btn-danger'
-                    // onClick={() => confirmarEliminarProducto(id)}
-                >Eliminar</button>
-            </td>
-            <td>
-                {id}
-            </td>
-        </tr>
+        <>
+            {user ? (
+                <Col md={4} >
+                    <Card className="questions-card">
+                        <Card.Img variant="top" src={user.avatar} />
+                        <Card.Body>
+                            <Card.Title>{user.first_name} {user.last_name}</Card.Title>
+                            <p>{user.email}</p>
+                        </Card.Body>
+                    </Card>
+                </Col >
+            ) : null}
+        </>
     );
 }
 

@@ -1,14 +1,14 @@
 import React, { useEffect } from 'react';
 import { useHistory } from 'react-router-dom'
 //components
-import UserDetail from './userDetail'
+import UserCard from './userCard'
 //redux
 import { useSelector, useDispatch } from 'react-redux'
 import { getUsersListAction } from '../../../action/usersAction'
 
 
 
-const Users = () => {
+const UserList = () => {
 
     const history = useHistory()
     const isLoggedIn = useSelector(state => state.profile.isLoggedIn)
@@ -50,7 +50,7 @@ const Users = () => {
                 </thead>
                 <tbody>
                     {users ? users.map(user => (
-                        <UserDetail
+                        <UserCard
                             key={user.id}
                             user={user}
                         />
@@ -74,4 +74,4 @@ const Users = () => {
     );
 }
 
-export default Users;
+export default UserList;

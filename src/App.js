@@ -4,7 +4,9 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 //Components
 import NavBar from './components/ui/navBar/navBar'
 import LoginForm from './components/auth/loginForm'
-import User from './components/ui/users/user'
+import UserList from './components/ui/users/userList'
+import UserDetail from './components/ui/users/userDetail'
+
 //redux
 import { Provider } from 'react-redux'
 import store from './store'
@@ -19,7 +21,8 @@ function App() {
         <div className='container mt-5'>
           <Switch>
             <Route exact path='/login' component={LoginForm} />
-            <Route exact path='/users' component={User} />
+            <Route exact path='/users' component={UserList} />
+            <Route exact path='/users/details/:id' component={UserDetail} />
 
             
           </Switch>
