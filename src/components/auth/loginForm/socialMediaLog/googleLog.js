@@ -1,22 +1,21 @@
 import React from 'react';
 import GoogleLogin from 'react-google-login'
+import { useHistory } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { addProfileAction} from '../../../../action/profileAction'
 
 const GoogleLog = () => {
 
     const dispatch = useDispatch()
+    const history = useHistory()
 
     const callProfile = profile => {
         console.log (profile)
         dispatch(addProfileAction(profile))
+        history.push('/users')
         
     }
     
-    // console.log(process.env.REACT_APP_TEST_GOOGLE)
-    // const responseGoogle = response => {
-    //     console.log(response)
-    // }
     return (
         <GoogleLogin
             clientId={process.env.REACT_APP_TEST_GOOGLE}
