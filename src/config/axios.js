@@ -1,7 +1,7 @@
 import axios from 'axios'
 
-const clienteAxios = axios.create({
-    baseURL: 'http://localhost:4000/'
+const userService = axios.create({
+    baseURL: 'https://reqres.in/'
 })
 
-export default clienteAxios
+export default userService

@@ -5,7 +5,8 @@ import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import FormControl from 'react-bootstrap/FormControl'
 import { Link, NavLink } from 'react-router-dom'
-import {Image } from 'react-bootstrap';
+import { Image } from 'react-bootstrap';
+
 //redux 
 import { useSelector, useDispatch } from 'react-redux'
 
@@ -21,7 +22,7 @@ const NavBar = () => {
     return (
         <>
             <Navbar bg="dark" variant="dark">
-                <Image src={pictureLog} roundedCircle />
+                <Image src={pictureLog} roundedCircle className='mr-4' />
                 <Link to="/">Cloud District</Link>
                 <Nav className="mr-auto">
                     <Link to="/login">Log In</Link>
