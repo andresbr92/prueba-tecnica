@@ -9,6 +9,7 @@ import { getUsersListAction} from '../../../action/usersAction'
 
 
 const Users = () => {
+    
     const history = useHistory()
     const isLoggedIn = useSelector(state => state.profile.isLoggedIn)
     
@@ -17,8 +18,8 @@ const Users = () => {
     useEffect(() => { 
         dispatch(getUsersListAction())
 
-    },[])
-    console.log(isLoggedIn)
+    }, [])
+    const users = useSelector(state => state.users.users.data)
     return (
         <>
             {isLoggedIn ? <p> Lista de usuarios</p> : history.push('/login')}
@@ -31,6 +32,12 @@ const Users = () => {
                     </tr>
                 </thead>
                 <tbody>
+                    {users ? users.map(user => (
+                        <UserDetail
+                            key={user.id}
+                            user={user}
+                        />
+                    )) : null}
                     
 
                 </tbody>

@@ -8,7 +8,6 @@ export function addProfileAction(profile) {
     return async (dispatch) => {
         try {
             dispatch (addProfileToState(profile))
-            console.log(profile)
         } catch (error) {
             
         }

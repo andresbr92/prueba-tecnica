@@ -10,7 +10,6 @@ const GoogleLog = () => {
     const history = useHistory()
 
     const callProfile = profile => {
-        console.log (profile)
         dispatch(addProfileAction(profile))
         history.push('/users')
         
@@ -27,5 +26,4 @@ const GoogleLog = () => {
         />
     );
 }
-
 export default GoogleLog;

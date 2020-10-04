@@ -11,7 +11,6 @@ const FacebookLog = () => {
     const history = useHistory()
 
     const callProfile = profile => {
-        console.log(profile)
         dispatch(addProfileAction(profile))
         history.push('/users')
 

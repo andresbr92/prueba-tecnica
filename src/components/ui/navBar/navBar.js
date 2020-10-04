@@ -14,9 +14,8 @@ import { useSelector, useDispatch } from 'react-redux'
 const NavBar = () => {
     const isLoggedIn = useSelector(state => state.profile.isLoggedIn)
     const pictureLog = useSelector(state => {
-       return  isLoggedIn ? state.profile.profile.picture.data.url : null
+    return  isLoggedIn ? state.profile.profile.picture.data.url : null
     })
-    console.log(pictureLog)
 
 
     return (
