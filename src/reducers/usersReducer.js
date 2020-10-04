@@ -23,7 +23,6 @@ export default function (state = initialState, action) {
                 loading: true
             }
         case GET_USERS_SUCCESS:
-            console.log(action)
             return {
                 ...state,
                 users: action.payload.data.slice(0,5),

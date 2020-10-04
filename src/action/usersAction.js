@@ -14,7 +14,6 @@ export function getUsersListAction(page) {
         try {
             const response = await userService.get(`/api/users?page=${page}`)
             dispatch(getUsersSuccess(response.data, page))
-            console.log(response.data.data)
 
         } catch (error) {
 
@@ -24,24 +23,36 @@ export function getUsersListAction(page) {
 const startDownloadUser = () => ({
     type: START_DOWNLOAD_USERS
 })
-const getUsersSuccess = (response,page) => ({
+const getUsersSuccess = (response, page) => ({
     type: GET_USERS_SUCCESS,
     payload: response,
     page
 
 })
+//get one user details
 export function getUserDetailAction(id) {
     return async (dispatch) => {
         try {
             const response = await userService.get(`/api/users/${id}`)
             dispatch(getOneUser(response))
         } catch (error) {
-            
+
         }
     }
 }
 
 const getOneUser = response => ({
     type: ONE_USER_SUCCESS,
-    payload:response
+    payload: response
 })
+//create a new user
+export function createNewUserAction(user) {
+    return async (dispatch) => {
+        try {
+            const response = await userService.post('/api/users', user)
+            console.log (response)
+        } catch (error) {
+
+        }
+    }
+}

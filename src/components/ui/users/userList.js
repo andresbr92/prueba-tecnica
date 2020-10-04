@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useHistory } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 //components
 import UserCard from './userCard'
 //redux
@@ -39,6 +40,10 @@ const UserList = () => {
     }
     return (
         <>
+            <Link
+                to={'/users/new'}
+                
+            >Add user</Link>
             {isLoggedIn ? <p> Lista de usuarios</p> : history.push('/login')}
             <table className='table table-striped'>
                 <thead className=' bg-primary table-dark' >
