@@ -20,7 +20,7 @@ const UserCard = ({ user }) => {
     }
     return (
         <>
-            <Card style={{ width: '18rem' }}>
+            <Card style={{ width: '13rem' }}>
                 <Card.Img variant="top" src={avatar} />
                 <Card.Body>
                     <Card.Title>{first_name} {last_name} </Card.Title>

@@ -7,6 +7,7 @@ import LoginForm from './components/auth/loginForm'
 import UserList from './components/ui/users/userList'
 import UserDetail from './components/ui/users/userDetail'
 import NewUserForm from './components/ui/users/newUser'
+import EditUser from './components/ui/users/userEdit'
 
 //redux
 import { Provider } from 'react-redux'
@@ -25,6 +26,7 @@ function App() {
             <Route exact path='/users' component={UserList} />
             <Route exact path='/users/details/:id' component={UserDetail} />
             <Route exact path='/users/new' component={NewUserForm} />
+            <Route exact path='/users/edit' component={EditUser} />
 
             
           </Switch>

@@ -1,11 +1,15 @@
 import React, { useEffect } from 'react';
 import { useHistory } from 'react-router-dom'
 import { Link } from 'react-router-dom'
+import styled from 'styled-components'
 //components
 import UserCard from './userCard'
 //redux
 import { useSelector, useDispatch } from 'react-redux'
 import { getUsersListAction } from '../../../action/usersAction'
+
+
+
 
 
 
@@ -40,7 +44,7 @@ const UserList = () => {
 
     }
     return (
-        <>
+        <div>
             
             
             
@@ -49,14 +53,23 @@ const UserList = () => {
                 to={'/users/new'}
 
             >Add user</Link>
-            {isLoggedIn ? null : history.push('/login')}
-            {users ? users.map(user => (
-                <UserCard
-                    key={user.id}
-                    user={user}
-                />
-            )) : null}
+                {isLoggedIn ? null : history.push('/login')}
+            <div className='row'>
+                {users ? users.map(user => (
+                    
+
+                    <UserCard
+                        className='card col-md-2'
+                            key={user.id}
+                            user={user}
+                        />
+                    
+                )) : null}
+
+            </div>
             
+            <div className='myContainer'>
+
             {page !== 1 ? <button
                 type='button'
                 className='btn btn-primary mr-2'
@@ -67,7 +80,8 @@ const UserList = () => {
                 className='btn btn-primary mr-2'
                 onClick={numPageNext}
             > Next </button>
-        </>
+            </div>
+        </div>
     );
 }
 

@@ -1,13 +1,22 @@
 import React from 'react';
-import { useSelector} from 'react-redux'
+import { useSelector, useDispatch} from 'react-redux'
 import Card from 'react-bootstrap/Card'
 import Col from 'react-bootstrap/Col'
+import { getUserToEditAction } from '../../../action/usersAction'
+import { useHistory } from 'react-router-dom';
 
 
 
 const UserDetail = () => {
+    const dispatch = useDispatch()
+    const history = useHistory()
 
     const user = useSelector(state => state.users.getOneUser.data)
+
+    const getTheUser = user => {
+        dispatch(getUserToEditAction(user))
+        history.push('/users/edit')
+    }
 
     return (
         <>
@@ -20,6 +29,12 @@ const UserDetail = () => {
                             <p>{user.email}</p>
                         </Card.Body>
                     </Card>
+                        <button
+                            type='button'
+                            className='btn btn-primary mr-2'
+                        onClick={() => getTheUser(user)}
+                        > Edit </button>
+                       
                 </Col >
             ) : null}
         </>

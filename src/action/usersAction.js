@@ -1,7 +1,9 @@
 import {
     GET_USERS_SUCCESS,
     START_DOWNLOAD_USERS,
-    ONE_USER_SUCCESS
+    ONE_USER_SUCCESS,
+    GET_USER_EDIT,
+    EDIT_USER_SUCCESS
 } from '../types'
 import userService from '../config/axios'
 import Swal from 'sweetalert2'
@@ -66,3 +68,30 @@ export function createNewUserAction(user) {
         }
     }
 }
+
+//get user to edit
+export function getUserToEditAction(user) {
+    return (dispatch) => {
+        dispatch(getUserToEdit(user))
+    }
+}
+const getUserToEdit = user => ({
+    type: GET_USER_EDIT,
+    payload: user
+})
+//edit user success
+export function editUserSuccessAction(user) {
+    return async (dispatch) => {
+        try {
+            const response = await userService.put(`/api/users/${user.id}`, user)
+            console.log (response)
+            dispatch(editUserSuccess(user))
+        } catch (error) {
+
+        }
+    }
+}
+const editUserSuccess = user => ({
+    type: EDIT_USER_SUCCESS,
+    payload: user
+})
