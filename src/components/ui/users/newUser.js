@@ -9,6 +9,7 @@ const NewUserForm = () => {
     const history = useHistory()
     const dispatch = useDispatch()
     const isLoggedIn = useSelector(state => state.profile.isLoggedIn)
+    const page = useSelector(state => state.users.page)
 
     const [name, saveName] = useState('')
     const [job, saveJob] = useState('')
@@ -28,7 +29,7 @@ const NewUserForm = () => {
         })
         saveName('')
         saveJob('')
-        history.push('/users')
+        history.push(`/users/${page}`)
 
 
     }

@@ -12,22 +12,23 @@ const TwitterLog = () => {
     const history = useHistory()
 
     const callProfile =( error, profile) => {
-        console.log(profile)
-        dispatch(addProfileAction(profile))
-        history.push('/users')
+        console.log(error,profile)
+        //dispatch(addProfileAction(profile))
+        //history.push('/users')
 
     }
 
-
     return (
+        
 
         <TwitterLogin
             authCallback={callProfile}
             consumerKey={process.env.REACT_APP_TEST_TWITTER}
             consumerSecret={process.env.REACT_APP_TEST_TWITTER_SECRET}
-            callbackUrl='https://localhost:3000/'
+            callbackUrl='https://localhost:3000'
 
         />
+        
     );
 }
 

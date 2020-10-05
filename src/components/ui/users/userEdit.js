@@ -43,7 +43,7 @@ const EditUser = () => {
         <>
             {isLoggedIn ? <p> Add new user</p> : history.push('/login')}
             <form
-            //onSubmit={handleForSubmit}
+            onSubmit={handleForSubmit}
             >
                 <div className='form-group'>
                     <label>Name</label>

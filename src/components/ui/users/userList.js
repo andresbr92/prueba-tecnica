@@ -13,10 +13,12 @@ import { getUsersListAction } from '../../../action/usersAction'
 
 const UserList = () => {
 
+    const dispatch = useDispatch()
     const history = useHistory()
     const isLoggedIn = useSelector(state => state.profile.isLoggedIn)
+    const users = useSelector(state => state.users.users)
+    let page = useSelector(state => state.users.page)
 
-    const dispatch = useDispatch()
 
     useEffect(() => {
         if (isLoggedIn) {
@@ -26,8 +28,7 @@ const UserList = () => {
 
 
     }, [])
-    const users = useSelector(state => state.users.users)
-    let page = useSelector(state => state.users.page)
+    
     const numPageNext = () => {
         page++
         dispatch(getUsersListAction(page))

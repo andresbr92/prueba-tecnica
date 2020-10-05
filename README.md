@@ -1,13 +1,15 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a technical test for Cloud district. This is a CRUD with API consumption made with react redux, hooks, axios,styled components.
 
 ## Available Scripts
 
 In the project directory, you can run:
 
-### `npm start`
+### `HTTPS= true npm start`
 
 Runs the app in the development mode.<br />
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Does it look like this:
+<img src='./public/images/homeScreen.png'>
 
 The page will reload if you make edits.<br />
 You will also see any lint errors in the console.

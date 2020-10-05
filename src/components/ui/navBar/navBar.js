@@ -24,6 +24,18 @@ const NavBar = () => {
         }
     // return  isLoggedIn ? state.profile.profile.picture.data.url : null
     })
+    const nameLog = useSelector(state => {
+        switch (state.profile.social) {
+            case 'facebook':
+                return state.profile.profile.name
+            case 'google':
+                return state.profile.profile.profileObj.name
+            default:
+                return null
+        }
+        // return  isLoggedIn ? state.profile.profile.picture.data.url : null
+    })
+    console.log(nameLog)
     const page = useSelector(state => state.users.page)
 
 
@@ -32,15 +44,15 @@ const NavBar = () => {
             
             <Navbar bg="dark" variant="dark">
                 
-                {isLoggedIn ? <Image src={pictureLog} roundedCircle className='mr-4' /> : null} 
+                
                 <Link className='my-link' to="/">Cloud District</Link>
                 <Nav className="mr-auto">
                     <Link className='my-link' to="/login">Log In</Link>
                     <Link className='my-link' to={`/users/${page}`}>People</Link>
                 </Nav>
                 <Form inline>
-                    <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-                    <Button variant="outline-info">Search</Button>
+                    {isLoggedIn ? <Link className='my-link' to="/">{nameLog}</Link> : null}
+                    {isLoggedIn ? <Image src={pictureLog} roundedCircle className='mr-4' /> : null}
                 </Form>
             </Navbar>
         </>

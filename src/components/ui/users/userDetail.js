@@ -51,7 +51,7 @@ const UserDetail = () => {
                 </Col >
             ) : null}
         </>
-    );
+    )
 }
 
 export default UserDetail;
