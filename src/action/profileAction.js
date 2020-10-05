@@ -7,9 +7,10 @@ import {
 export function addProfileAction(profile, social) {
     return async (dispatch) => {
         try {
-            dispatch(addProfileToState(profile, social))
+           await dispatch(addProfileToState(profile, social))
             console.log(social)
         } catch (error) {
+            console.log(error)
             dispatch(addProfileToStateError(true))
             
         }

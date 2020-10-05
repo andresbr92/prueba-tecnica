@@ -31,11 +31,12 @@ justify-content:center;
 const LoginForm = () => {
     const history = useHistory()
     const isLoggedIn = useSelector(state => state.profile.isLoggedIn)
+    const page = useSelector(state => state.users.page)
     return (
 
         <div className='myContainer'>
             {isLoggedIn ?
-                history.push('/users')
+                history.push(`/users/${page}`)
                 :
                 <>
                     <Social>

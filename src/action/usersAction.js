@@ -116,6 +116,7 @@ export function deleteUserAction(id) {
         try {
             await userService.delete(`/api/users/${id}`)
             console.log(id)
+            Swal.fire('Success', 'User deleted', 'success')
             
         } catch (error) {
             Swal.fire({

@@ -11,9 +11,6 @@ import { getUsersListAction } from '../../../action/usersAction'
 
 
 
-
-
-
 const UserList = () => {
 
     const history = useHistory()
@@ -34,6 +31,7 @@ const UserList = () => {
     const numPageNext = () => {
         page++
         dispatch(getUsersListAction(page))
+        history.push (`/users/${page}`)
         return
 
     }
@@ -43,6 +41,7 @@ const UserList = () => {
         } else {
             page--
             dispatch(getUsersListAction(page))
+            history.push(`/users/${page}`)
             return
         }
 

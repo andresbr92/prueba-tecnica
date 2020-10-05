@@ -11,7 +11,7 @@ const TwitterLog = () => {
     const dispatch = useDispatch()
     const history = useHistory()
 
-    const callProfile = profile => {
+    const callProfile =( error, profile) => {
         console.log(profile)
         dispatch(addProfileAction(profile))
         history.push('/users')

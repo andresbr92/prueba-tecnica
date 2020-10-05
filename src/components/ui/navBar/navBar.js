@@ -24,17 +24,19 @@ const NavBar = () => {
         }
     // return  isLoggedIn ? state.profile.profile.picture.data.url : null
     })
+    const page = useSelector(state => state.users.page)
 
 
     return (
         <>
+            
             <Navbar bg="dark" variant="dark">
                 
-                <Image src={pictureLog} roundedCircle className='mr-4' />
+                {isLoggedIn ? <Image src={pictureLog} roundedCircle className='mr-4' /> : null} 
                 <Link className='my-link' to="/">Cloud District</Link>
                 <Nav className="mr-auto">
                     <Link className='my-link' to="/login">Log In</Link>
-                    <Link className='my-link' to="/users">People</Link>
+                    <Link className='my-link' to={`/users/${page}`}>People</Link>
                 </Nav>
                 <Form inline>
                     <FormControl type="text" placeholder="Search" className="mr-sm-2" />

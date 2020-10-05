@@ -8,11 +8,17 @@ const GoogleLog = () => {
 
     const dispatch = useDispatch()
     const history = useHistory()
+    const page = useSelector(state => state.users.page)
 
     const callProfile = (profile, social) => {
+        console.log(profile)
         dispatch(addProfileAction(profile, social = 'google'))
-        history.push('/users')
+        history.push(`/users/${page}`)
         
+    }
+    const callProfileFailure = error => {
+        console.log(error)
+
     }
     
     return (
@@ -20,7 +26,7 @@ const GoogleLog = () => {
             clientId={process.env.REACT_APP_TEST_GOOGLE}
             buttonText='Continuar con Google'
             onSuccess={callProfile}
-            onFailure={callProfile}
+            onFailure={callProfileFailure}
             autoLoad={false}
             cookiePolicy={'single_host_origin'}
         />

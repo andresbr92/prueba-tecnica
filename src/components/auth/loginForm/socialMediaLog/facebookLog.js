@@ -9,10 +9,13 @@ import { addProfileAction } from '../../../../action/profileAction'
 const FacebookLog = () => {
     const dispatch = useDispatch()
     const history = useHistory()
+    
+
+    const page = useSelector(state => state.users.page)
 
     const callProfile = (profile,social) => {
         dispatch(addProfileAction(profile, social='facebook'))
-        history.push('/users')
+        history.push(`/users/${page}`)
 
     }
 
