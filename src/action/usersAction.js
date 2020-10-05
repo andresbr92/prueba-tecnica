@@ -15,7 +15,7 @@ export function getUsersListAction(page) {
     return async (dispatch) => {
         dispatch(startDownloadUser())
         try {
-            const response = await userService.get(`/api/users?page=${page}`)
+            const response = await userService.get(`/apis/users?page=${page}`)
             dispatch(getUsersSuccess(response.data, page))
 
         } catch (error) {
