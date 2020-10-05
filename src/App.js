@@ -23,7 +23,7 @@ function App() {
         <div className='container mt-5'>
           <Switch>
             <Route exact path='/login' component={LoginForm} />
-            <Route exact path='/users' component={UserList} />
+            <Route exact path='/users/' component={UserList} />
             <Route exact path='/users/details/:id' component={UserDetail} />
             <Route exact path='/users/new' component={NewUserForm} />
             <Route exact path='/users/edit' component={EditUser} />

@@ -22,7 +22,11 @@ const UserList = () => {
     const dispatch = useDispatch()
 
     useEffect(() => {
-        dispatch(getUsersListAction(page))
+        if (isLoggedIn) {
+
+            dispatch(getUsersListAction(page))
+        }
+
 
     }, [])
     const users = useSelector(state => state.users.users)
@@ -44,44 +48,45 @@ const UserList = () => {
 
     }
     return (
-        <div>
-            
-            
-            
-            <Link
-                className='btn btn-success mr-2 mb-2'
-                to={'/users/new'}
+        <>
+            {isLoggedIn ? (
+                <div>
+                    <Link
+                        className='btn btn-success mr-2 mb-2'
+                        to={'/users/new'}
 
-            >Add user</Link>
-                {isLoggedIn ? null : history.push('/login')}
-            <div className='row'>
-                {users ? users.map(user => (
-                    
+                    >Add user</Link>
+                    <div className='row'>
+                        {users ? users.map(user => (
 
-                    <UserCard
-                        className='card col-md-2'
-                            key={user.id}
-                            user={user}
-                        />
-                    
-                )) : null}
 
-            </div>
-            
-            <div className='myContainer'>
+                            <UserCard
+                                className='card col-md-2'
+                                key={user.id}
+                                user={user}
+                            />
 
-            {page !== 1 ? <button
-                type='button'
-                className='btn btn-primary mr-2'
-                onClick={numPagePrevious}
-            > Previous </button> : null}
-            <button
-                type='button'
-                className='btn btn-primary mr-2'
-                onClick={numPageNext}
-            > Next </button>
-            </div>
-        </div>
+                        )) : null}
+
+                    </div>
+
+                    <div className='myContainer'>
+
+                        {page !== 1 ? <button
+                            type='button'
+                            className='btn btn-primary mr-2'
+                            onClick={numPagePrevious}
+                        > Previous </button> : null}
+                        <button
+                            type='button'
+                            className='btn btn-primary mr-2'
+                            onClick={numPageNext}
+                        > Next </button>
+                    </div>
+                </div>
+            ) : history.push('/login')}
+
+        </>
     );
 }
 

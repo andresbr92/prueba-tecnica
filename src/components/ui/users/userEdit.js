@@ -36,6 +36,7 @@ const EditUser = () => {
     const handleForSubmit = e => {
         e.preventDefault()
         dispatch(editUserSuccessAction(user))
+        history.push('/users')
     }
     
     return (

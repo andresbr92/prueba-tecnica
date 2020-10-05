@@ -28,6 +28,7 @@ const NewUserForm = () => {
         })
         saveName('')
         saveJob('')
+        history.push('/users')
 
 
     }

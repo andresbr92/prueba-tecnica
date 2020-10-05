@@ -20,6 +20,11 @@ export function getUsersListAction(page) {
 
         } catch (error) {
             //TODO completar el error 
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Something gone wrong, please try again'
+            })
 
         }
     }
@@ -41,6 +46,11 @@ export function getUserDetailAction(id) {
             dispatch(getOneUser(response))
         } catch (error) {
             //TODO completar el error
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Something gone wrong, please try again'
+            })
 
         }
     }
@@ -87,6 +97,11 @@ export function editUserSuccessAction(user) {
             console.log (response)
             dispatch(editUserSuccess(user))
         } catch (error) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Something gone wrong, please try again'
+            })
 
         }
     }
@@ -95,3 +110,22 @@ const editUserSuccess = user => ({
     type: EDIT_USER_SUCCESS,
     payload: user
 })
+//delete user
+export function deleteUserAction(id) {
+    return async (dispatch) => {
+        try {
+            await userService.delete(`/api/users/${id}`)
+            console.log(id)
+            
+        } catch (error) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Something gone wrong, please try again'
+            })
+            
+            
+        }
+        
+}
+}

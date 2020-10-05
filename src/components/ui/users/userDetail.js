@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector, useDispatch} from 'react-redux'
 import Card from 'react-bootstrap/Card'
 import Col from 'react-bootstrap/Col'
-import { getUserToEditAction } from '../../../action/usersAction'
+import { getUserToEditAction, deleteUserAction } from '../../../action/usersAction'
 import { useHistory } from 'react-router-dom';
 
 
@@ -16,6 +16,9 @@ const UserDetail = () => {
     const getTheUser = user => {
         dispatch(getUserToEditAction(user))
         history.push('/users/edit')
+    }
+    const deleteUser = id => { 
+        dispatch(deleteUserAction(id))
     }
 
     return (
@@ -33,7 +36,12 @@ const UserDetail = () => {
                             type='button'
                             className='btn btn-primary mr-2'
                         onClick={() => getTheUser(user)}
-                        > Edit </button>
+                    > Edit </button>
+                    <button
+                        type='button'
+                        className='btn btn-danger mr-2'
+                        onClick={() => deleteUser(user.id)}
+                    > Delete </button>
                        
                 </Col >
             ) : null}
