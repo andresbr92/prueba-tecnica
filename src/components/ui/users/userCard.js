@@ -1,15 +1,17 @@
 import React from 'react';
 import { getUserDetailAction } from '../../../action/usersAction'
-import {useHistory} from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 //redux
 import { useSelector, useDispatch } from 'react-redux'
+import { Card } from 'react-bootstrap'
+import { Button } from 'react-bootstrap'
 
 const UserCard = ({ user }) => {
     const history = useHistory()
     const dispatch = useDispatch()
 
 
-    const { first_name, avatar, id } = user
+    const { first_name, avatar, id, last_name } = user
 
     const getUserDetail = id => {
         dispatch(getUserDetailAction(id))
@@ -17,14 +19,27 @@ const UserCard = ({ user }) => {
         history.push(`/users/details/${id}`)
     }
     return (
-        <tr>
-            <td>{first_name}</td>
-            <td> <img src={avatar} alt='#'></img></td>
+        <>
+            <Card style={{ width: '18rem' }}>
+                <Card.Img variant="top" src={avatar} />
+                <Card.Body>
+                    <Card.Title>{first_name} {last_name} </Card.Title>
+                    <Card.Text>
+                        
+                     </Card.Text>
+                    <Button
+                        onClick={() => getUserDetail(id)}
+                        variant="primary">Details</Button>
+                </Card.Body>
+            </Card>
+            {/* <tr>
+            <td></td>
+            <td> <img src='' alt='#'></img></td>
             <td className='acciones'>
                 <button
                     type='button'
                     className='btn btn-primary mr-2'
-                    onClick={() => getUserDetail(id)}
+                    
                 > Details </button>
                 <button
                     type='button'
@@ -40,7 +55,8 @@ const UserCard = ({ user }) => {
             <td>
                 {id}
             </td>
-        </tr>
+            </tr> */}
+        </>
     );
 }
 

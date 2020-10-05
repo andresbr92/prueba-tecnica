@@ -29,11 +29,12 @@ const NavBar = () => {
     return (
         <>
             <Navbar bg="dark" variant="dark">
+                
                 <Image src={pictureLog} roundedCircle className='mr-4' />
-                <Link to="/">Cloud District</Link>
+                <Link className='my-link' to="/">Cloud District</Link>
                 <Nav className="mr-auto">
-                    <Link to="/login">Log In</Link>
-                    <Link to="/users">People</Link>
+                    <Link className='my-link' to="/login">Log In</Link>
+                    <Link className='my-link' to="/users">People</Link>
                 </Nav>
                 <Form inline>
                     <FormControl type="text" placeholder="Search" className="mr-sm-2" />

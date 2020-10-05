@@ -9,6 +9,7 @@ import { getUsersListAction } from '../../../action/usersAction'
 
 
 
+
 const UserList = () => {
 
     const history = useHistory()
@@ -40,31 +41,22 @@ const UserList = () => {
     }
     return (
         <>
+            
+            
+            
             <Link
+                className='btn btn-success mr-2 mb-2'
                 to={'/users/new'}
-                
+
             >Add user</Link>
-            {isLoggedIn ? <p> Lista de usuarios</p> : history.push('/login')}
-            <table className='table table-striped'>
-                <thead className=' bg-primary table-dark' >
-                    <tr>
-                        <th scope='col'>Imagen</th>
-                        <th scope='col'>nombre</th>
-                        <th scope='col'>trabajo</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {users ? users.map(user => (
-                        <UserCard
-                            key={user.id}
-                            user={user}
-                        />
-                    )) : null}
-
-
-                </tbody>
-
-            </table>
+            {isLoggedIn ? null : history.push('/login')}
+            {users ? users.map(user => (
+                <UserCard
+                    key={user.id}
+                    user={user}
+                />
+            )) : null}
+            
             {page !== 1 ? <button
                 type='button'
                 className='btn btn-primary mr-2'
